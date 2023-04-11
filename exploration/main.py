@@ -19,7 +19,8 @@ with open(TEST_DATA_PATH) as f:
     while line := f.readline(): 
         gene = gencode(line.split())
         if gene.gene_type != 'protein_coding': continue # there are 40 distinct gene types, for purposes of scope we are constraining to just ones coding for proteins
-
+        if int(gene.unstranded) < 1: continue # don't count genes with no reads
+         
         reads_map[gene.gene_name] = gene
         reads_metadata['unstranded_total_count'] += int(gene.unstranded)
 
