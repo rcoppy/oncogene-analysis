@@ -5,6 +5,15 @@ class base_model:
     model_name = "Abstract gene model format"
     skippable_rows_count = 6 # skip the first n lines of the file, if they're not data but a header
 
+class model_processed(base_model): 
+    model_name = "training-ready format"
+    skippable_rows_count = 4
+
+    def __init__(self, row_data) -> None:
+        self.gene_name = row_data[0]
+        self.unstranded = row_data[1]
+        self.unstranded_normalized = row_data[2]
+
 class model_gencode_36(base_model): 
     def __init__(self, row_data) -> None:
         self.gene_id = row_data[0]
