@@ -4,11 +4,12 @@ from gene_models import base_model
 import pathlib
 
 class PostprocessorTrim: 
-    def __init__(self, model_type: base_model, data_path, destination_path, deviation_cutoff: int) -> None:
+    def __init__(self, model_type: base_model, data_path, destination_path, deviation_cutoff: int, count_floor: int = 1000) -> None:
         self.model_type = model_type
         self.data_path = data_path 
         self.destination_path = destination_path
         self.deviation_cutoff = deviation_cutoff
+        self.count_floor = count_floor
 
     # https://stackoverflow.com/questions/11686720/is-there-a-numpy-builtin-to-reject-outliers-from-a-list
     # FYI: reasonable to assume transcriptome follows negative binomial distribution: https://www.biostars.org/p/463301/
@@ -61,8 +62,8 @@ class PostprocessorTrim:
                 gene: base_model = self.model_type(line.split(','))                
                 count = int(gene.unstranded)
 
-                # reject counts less than 100 
-                if count < 1000: continue
+                # reject counts less than count floor 
+                if count < self.count_floor: continue
 
                 input_values.append((gene.gene_name, count))
 

@@ -3,10 +3,11 @@ import numpy as np
 
 class Preprocessor: 
 
-    def __init__(self, model_type, data_path, destination_path, segments: list[tuple]) -> None:
+    def __init__(self, model_type, data_path, destination_path, segments: list[tuple], count_floor=1) -> None:
         self.model_type = model_type
         self.data_path = data_path
         self.destination_path = destination_path
+        self.count_floor = count_floor # disregard reads below this raw count
 
         self.reads_map: dict[str, model_type] = {}
         self.reads_metadata: dict = {}
@@ -50,7 +51,7 @@ class Preprocessor:
             while line := f.readline(): 
                 gene = self.model_type(line.split())
                 if gene.gene_type != 'protein_coding': continue # there are 40 distinct gene types, for purposes of scope we are constraining to just ones coding for proteins
-                if int(gene.unstranded) < 1: continue # don't count genes with no reads
+                if int(gene.unstranded) < self.count_floor: continue # don't count genes below the count floor
                 
                 self.reads_map[gene.gene_name] = gene
                 self.reads_metadata['unstranded_total_count'] += int(gene.unstranded)

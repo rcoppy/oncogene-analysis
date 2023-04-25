@@ -5,3 +5,4 @@ data/d1f7678a-8106-46c9-95b7-5ec5d940f08c.rna_seq.augmented_star_gene_counts.tsv
 data/processed.zip filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 data/archives/filtered-collated.zip filter=lfs diff=lfs merge=lfs -text
+data/archives/extra-sensitive-filtered-collated.zip filter=lfs diff=lfs merge=lfs -text
