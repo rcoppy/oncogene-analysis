@@ -6,3 +6,4 @@ data/processed.zip filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 data/archives/filtered-collated.zip filter=lfs diff=lfs merge=lfs -text
 data/archives/extra-sensitive-filtered-collated.zip filter=lfs diff=lfs merge=lfs -text
+data/archives/3k-features-filtered-collated.zip filter=lfs diff=lfs merge=lfs -text
