@@ -7,4 +7,6 @@ data/processed.zip filter=lfs diff=lfs merge=lfs -text
 data/archives/filtered-collated.zip filter=lfs diff=lfs merge=lfs -text
 data/archives/extra-sensitive-filtered-collated.zip filter=lfs diff=lfs merge=lfs -text
 data/archives/3k-features-filtered-collated.zip filter=lfs diff=lfs merge=lfs -text
+
+models/3k_genes_analysis/combined_data_3k.csv
 /models/3k_genes_analysis/combined_data.csv filter=lfs diff=lfs merge=lfs -text
