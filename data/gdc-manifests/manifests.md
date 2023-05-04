@@ -1,0 +1,5 @@
+# GDC Manifest Files
+
+The enclosed manifest files can be used with the [GDC Data Transfer Tool](https://gdc.cancer.gov/access-data/gdc-data-transfer-tool) utility to download the ~1100 transcriptome samples programmatically, instead of one-by-one. Altogether the samples take up ~4.6 GB of disk space. Using the transfer tool is recommended over manual download.  
+
+Unfortunately, the transfer tool doesn't officially support Apple's ARM-architecture chipsets; the utility can still be acceptably executed (albeit with stability issues) on M1 machines via the [UTM virtual machine](https://mac.getutm.app/) running an [ARM distribution of Ubuntu](https://ubuntu.com/download/server/arm) with the [Box64 compatibility program](https://box86.org/category/box64/) installed. Using this approach, we were able to download ~90% of the 1100 transcriptome samples, which was enough for our data-modeling purposes.  
