@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import confusion_matrix, classification_report
-from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, ConfusionMatrixDisplay, roc_auc_score
 import matplotlib.pyplot as plt
 from imblearn.over_sampling import RandomOverSampler, SMOTE
 
@@ -48,6 +48,7 @@ if __name__ == "__main__":
     # # Evaluate model performance
     print("Accuracy: ", accuracy_score)
     print("F1 Score: ", f1_score)
+    print("AUC score: ", roc_auc_score(y_test, model.predict_proba(X_test)[:, 1]))
     
     # Confusion Matrix:
     cm = confusion_matrix(y_test, y_pred)
@@ -73,8 +74,7 @@ if __name__ == "__main__":
     plt.ylabel('Genes')
     plt.title('Decision Tree with 6k Genes using SMOTE')
     plt.gca().invert_yaxis()
-
-    # plt.savefig('3k_dec_tree_wit_smote.png') 
+    
     plt.show()
 
     
