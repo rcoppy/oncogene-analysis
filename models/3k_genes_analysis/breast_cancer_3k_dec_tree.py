@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.metrics import confusion_matrix, classification_report, roc_auc_score
 from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 from imblearn.over_sampling import SMOTE
@@ -48,7 +48,7 @@ if __name__ == "__main__":
     # # Evaluate model performance
     print("Accuracy: ", accuracy_score)
     print("F1 Score: ", f1_score)
-    
+    print("AUC score: ", roc_auc_score(y_test, model.predict_proba(X_test)[:, 1]))
 
     cm = confusion_matrix(y_test, y_pred)
     print('\nConfusion matrix:')
